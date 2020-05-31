@@ -46,12 +46,56 @@ void ex_d() {
 	printf("%d\n", sum);
 }
 
+//问题 E: 实现求1+2+3+...和的程序，要求得到使使和数大于1000的最小正整数
+void ex_e() {
+	int sum = 0, i =0;
+	for (i = 1; sum < 1001; i++) {
+		sum += i;
+	}
+	i -= 1; // 因为当sum<1001判断完后，i++不管判断结果如何都要执行
+	printf("%d\n", i);
+
+}
+
+// 问题 F: 例题5-6 矩阵输出
+void ex_f() {
+	for (int i = 1; i < 5; i++) {
+		printf("%3d%3d%3d%3d%3d\n", i, 2 * i, 3 * i, 4 * i, 5 * i);
+	}
+}
+
+// 问题 G: 例题5-7 求圆周率pi的近似值
+void ex_g_err() {
+	double pi = 0;
+	for (int i = 1; 1 / (double)(2 * i - 1) >= pow(10, -6); i++) {
+		if (i % 2 == 0) { // 这里会导致i变调值，再下一次i++ 的时候就不是序号加了
+			i = -i;
+		}
+		pi += 1 / (double)(2 * i - 1);
+	}
+	printf("%10.8f", 4 * pi);
+}
+void ex_g() {
+	double pi = 0;
+	for (int i = 1; 1 / (double)(2 * i - 1) >= pow(10, -6); i++) {
+		if (i % 2 == 0) {
+			pi -= 1 / (double)(2 * i - 1);
+			continue;
+		}
+		pi += 1 / (double)(2 * i - 1);
+	}
+	printf("PI=%10.8f\n", 4 * pi);
+}
+
 int main()
 {
 	//ex_a();
 	//ex_b();
 	//ex_c();
-	ex_d();
+	//ex_d();
+	//ex_e();
+	//ex_f();
+	ex_g();
 
 	return 0;
 }
