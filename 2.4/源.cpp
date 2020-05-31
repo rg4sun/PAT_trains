@@ -87,6 +87,59 @@ void ex_g() {
 	printf("PI=%10.8f\n", 4 * pi);
 }
 
+// 问题 H: 例题5-8 Fibonacci数列
+void ex_h() {
+	int n;
+	while (true)
+	{
+		scanf("%d", &n);
+		if (n < 50) {
+			break;
+		}
+	}
+	if (n < 3) {
+		printf("%d\n", 1);
+	}
+	else {
+		int a = 1, f=2;
+		for (int i = 0; i < n - 3; i++) {
+			int tmp;
+			tmp = a;
+			a = f;
+			f += tmp;
+		}
+		printf("%d\n", f);
+	}
+}
+
+// 问题 I: 习题5-10 分数序列求和
+// 这题分子分母都是斐波那契数列
+double fibo(int n) { // 这里为了便于后面分数求和，返回double值
+	if (n < 3) {
+		return (double) 1;
+	}
+	else {
+		int a = 1, f = 2;
+		for (int i = 0; i < n - 3; i++) {
+			int tmp;
+			tmp = a;
+			a = f;
+			f += tmp;
+		}
+		return (double) f;
+	}
+}
+void ex_i() {
+	// 分子从斐波那契数列的第3项开始
+	// 分母从第2项开始
+	// 则题目求分数序列前20项，则按分母数到斐波那契数列的第21项
+	double sum = 0;
+	for (int i = 2; i < 22; i++) {
+		sum += fibo(i + 1) / fibo(i);
+	}
+	printf("%.6f\n", sum);
+}
+
 int main()
 {
 	//ex_a();
@@ -95,7 +148,9 @@ int main()
 	//ex_d();
 	//ex_e();
 	//ex_f();
-	ex_g();
+	//ex_g();
+	//ex_h();
+	ex_i();
 
 	return 0;
 }
