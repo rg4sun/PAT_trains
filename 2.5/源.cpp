@@ -164,6 +164,32 @@ void ex_e_vio() {
 	printf("%d", RG_strcmp(a, b));
 }
 
+// 问题 F: 例题6-1 逆序输出数组元素
+// 这题。，。就是 c题目
+
+// 问题 G: 例题6-2 数组求解Fibonacci数列问题
+int fibo(int n) { 
+	if (n < 3) {
+		return 1;
+	}
+	else {
+		int a = 1, f = 2;
+		for (int i = 0; i < n - 3; i++) {
+			int tmp;
+			tmp = a;
+			a = f;
+			f += tmp;
+		}
+		return f;
+	}
+}
+
+void ex_g() {
+	for (int i = 1; i < 21; i++) {
+		printf("%d\n", fibo(i));
+	}
+}
+
 int main()
 {
 	//ss_inOut_test();
@@ -171,7 +197,8 @@ int main()
 	//ex_b();
 	//ex_c();
 	//ex_d();
-	ex_e();
+	//ex_e();
+	ex_g();
 
 
 
