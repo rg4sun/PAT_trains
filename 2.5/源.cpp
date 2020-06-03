@@ -2,6 +2,9 @@
 #include<cstdio>
 #include<cstdlib>
 #include<cstring>
+#include<iostream>
+#include<string>
+using namespace std;
 
 void ss_inOut_test() {
 	int n;
@@ -71,7 +74,8 @@ void ex_b() {
 }
 
 // 问题 C: 习题6-6 杨辉三角
-// 这题我用 排列数来做
+// 这题我用 组合数来做
+// 因为杨辉三角的每一层就是组合数的展开
 int factoria(int n) {
 	int f = 1;
 	for (int i = 1; i <= n; i++) { // n=0时候，不执行for，直接return f=1
@@ -94,12 +98,40 @@ void ex_c() {
 	}
 }
 
+// 问题 D: 习题6-12 解密
+// 这题是非常简单的 代换（替换）密码的实现
+// 注意代换密码 和 置换密码 区别
+// 代换是在一个字符集上进行映射替换，而置换是在明文基础上进行换位
+// 这题一个比较直接的思路是 将字符集直接定义成数组，通过数组下标索引进行代换规则
+// 但是，可以直接利用asccii码表
+
+char decode(char encode_chr) {
+	bool p = encode_chr >= 'A' && encode_chr <= 'Z';
+	bool q = encode_chr >= 'a' && encode_chr <= 'z';
+	if (!(p || q)) { // 不是字母的返回本身
+		return encode_chr;
+	}
+	if (encode_chr < 'a')
+		return 'Z' - (encode_chr - 'A');
+	return 'z' - (encode_chr - 'a');
+}
+void ex_d() {
+	string cipher;
+	cin >> cipher;
+	for (int i = 0; i < cipher.length(); i++) {
+		cipher[i] = decode(cipher[i]);
+	}
+	cout << cipher;
+}
+
 int main()
 {
 	//ss_inOut_test();
 	//ex_a();
 	//ex_b();
-	ex_c();
+	//ex_c();
+	ex_d();
+
 
 
 	return 0;
