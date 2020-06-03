@@ -1,3 +1,4 @@
 ﻿  源.cpp
-D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\2.5\源.cpp(121,20): warning C4018: “<”: 有符号/无符号不匹配
+D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\2.5\源.cpp(122,20): warning C4018: “<”: 有符号/无符号不匹配
+D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\2.5\源.cpp(143): warning C4715: “RG_strcmp”: 不是所有的控件路径都返回值
   2.5.vcxproj -> D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\2.5\Debug\2.5.exe

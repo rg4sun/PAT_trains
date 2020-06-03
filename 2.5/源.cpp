@@ -115,6 +115,7 @@ char decode(char encode_chr) {
 		return 'Z' - (encode_chr - 'A');
 	return 'z' - (encode_chr - 'a');
 }
+
 void ex_d() {
 	string cipher;
 	cin >> cipher;
@@ -124,13 +125,53 @@ void ex_d() {
 	cout << cipher;
 }
 
+//问题 E: 习题6-13 字符串比较
+int RG_strcmp(char str1[], char str2[]) {
+	char* p1 = str1;
+	char* p2 = str2;
+	int cmp = 0;
+	while (*p1 != '\0' && *p2 != '\0'){
+		cmp = *p1 - *p2;
+		if (cmp == 0) {
+			p1 += 1;
+			p2 += 1;
+		}
+		else {
+			return cmp;
+		}
+	}
+}
+// 关于 c++ string转char
+// https://www.cnblogs.com/mdumpling/p/8179167.html
+// https://www.cnblogs.com/wuruofeng/p/10412559.html
+void ex_e() { // 哦，好像不能这样，题目规定必须用gets()读入字符
+	string a, b;
+	cin >> a;
+	cin >> b;
+	// const char* c_a = a.c_str();
+	//char* pa = (char*)malloc(a.length() * sizeof(char));
+	//char* pb = (char*)malloc(b.length() * sizeof(char));
+	//pa = (char*)a.c_str();
+	//pb = (char*)b.c_str();
+	//printf("%d", RG_strcmp(pa, pb));
+	printf("%d", RG_strcmp((char*)a.c_str(), (char*)b.c_str()));
+}
+// 或者粗暴点，直接开辟两个大数组
+void ex_e_vio() {
+	char a[512], b[512];
+	gets_s(a, 512);
+	gets_s(b, 512);
+	printf("%d", RG_strcmp(a, b));
+}
+
 int main()
 {
 	//ss_inOut_test();
 	//ex_a();
 	//ex_b();
 	//ex_c();
-	ex_d();
+	//ex_d();
+	ex_e();
 
 
 
