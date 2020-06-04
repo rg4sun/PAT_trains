@@ -190,6 +190,19 @@ void ex_g() {
 	}
 }
 
+// 问题 H: 例题6-3 冒泡排序
+// A题实现过，直接用就完事了
+void ex_h() {
+	int a[10];
+	for (int i=0; i < 10; i++) {
+		scanf("%d", &a[i]);
+	}
+	bubble_sort(a, 10);
+	for (int i = 0; i < 10; i++) {
+		printf("%d\n", a[i]);
+	}
+}
+
 int main()
 {
 	//ss_inOut_test();
@@ -198,7 +211,8 @@ int main()
 	//ex_c();
 	//ex_d();
 	//ex_e();
-	ex_g();
+	//ex_g();
+	ex_h();
 
 
 
