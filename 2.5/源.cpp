@@ -203,6 +203,147 @@ void ex_h() {
 	}
 }
 
+// 问题 I: 例题6-4 矩阵转置
+// void f(int a[][]) // 非法，二维数组第二维必须指定
+// void f(int** a)  // 这个可以
+// 我觉得可以用一维数组模拟二维数组，这样就不会有嵌套for，复杂度也不高
+// 这里就先无脑写了最直接的思路
+void transposition_err(int** a, int m, int n) { // 有问题，a的地址不会被改掉
+	int** tmp = (int**)malloc(n * sizeof(int*));
+	for (int i = 0; i < n; i++) {
+		tmp[i] = (int*)malloc(m * sizeof(int));
+	}
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			tmp[i][j] = a[j][i];
+		}
+	}
+	a = tmp; // 明明使得a指向tmp了，调试的时候也对的
+	// 但是一旦函数返回了，a又不是指向tmp了，这是为啥
+	// 我猜测：tmp的生存域仅在此函数内，出了该函数内存就被回收了
+	// 所以a在函数返回后会指向哪？这里的测试是又变回原来的地址了
+	// https://blog.csdn.net/u010954806/article/details/23127371
+}
+void ex_i_err() {
+	//int a[2][3]; //  "int (*)[3]" 类型的实参与 "int **" 类型的形参不兼容
+	// transposition(int** a, int m, int n)
+	// 看来 二维数组和二维指针还是有所区别的
+	int m = 2, n = 3;
+	int** a = (int**)malloc(m * sizeof(int*));
+	// 发现一个现象，二维指针，a和a+1的地址不是连续的
+	// a[0][0]-[2]连续，a[1][0]-[2]连续，但是a[0][2]的下一个地址不是a[1][0]
+	for (int i = 0; i < n; i++) {
+		a[i] = (int*)malloc(n * sizeof(int));
+	}
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 3; j++) {
+			scanf("%d", &a[i][j]);
+		}
+	}
+	transposition_err(a, 2, 3);
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 2; j++) {
+			printf("%d ", a[i][j]);
+		}
+		printf("\n");
+	}
+}
+// ---------------------------------------------------------
+// 经典笨比代码，我怀疑上面的二重指针出现的错误，和这里应该类似
+void to1(int* x) {
+	int a = 1;
+	int* tmp = &a;
+	x = tmp;
+}
+
+void test() {
+	int a = 10;
+	int* p = &a;
+	to1(p);
+	printf("%d", *p);
+}
+// ---------------------------------------------------------
+
+
+// 一个很简单的解决方法, 直接传入一个指针用于接收就好
+void transposition(int** a, int m, int n, int **a_t) {
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			a_t[i][j] = a[j][i];
+		}
+	}
+}
+
+void ex_i() {
+	//int a[2][3]; //  "int (*)[3]" 类型的实参与 "int **" 类型的形参不兼容
+	// transposition(int** a, int m, int n)
+	// 看来 二维数组和二维指针还是有所区别的
+	int m = 2, n = 3;
+	int** a = (int**)malloc(m * sizeof(int*));
+	// 发现一个现象，二维指针，a和a+1的地址不是连续的
+	// a[0][0]-[2]连续，a[1][0]-[2]连续，但是a[0][2]的下一个地址不是a[1][0]
+	for (int i = 0; i < n; i++) {
+		a[i] = (int*)malloc(n * sizeof(int));
+	}
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 3; j++) {
+			scanf("%d", &a[i][j]);
+		}
+	}
+	int** a_t = (int**)malloc(n * sizeof(int*));
+	for (int i = 0; i < n; i++) {
+		a_t[i] = (int*)malloc(m * sizeof(int));
+	}
+	transposition(a, 2, 3, a_t);
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 2; j++) {
+			printf("%d ", a_t[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+// 稍微好看些
+int** transposition_1(int** a, int m, int n) {
+	int** tmp = (int**)malloc(n * sizeof(int*));
+	for (int i = 0; i < n; i++) {
+		tmp[i] = (int*)malloc(m * sizeof(int));
+	}
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			tmp[i][j] = a[j][i];
+		}
+	}
+
+	return tmp;
+}
+void ex_i_1() {
+	//int a[2][3]; //  "int (*)[3]" 类型的实参与 "int **" 类型的形参不兼容
+	// transposition(int** a, int m, int n)
+	// 看来 二维数组和二维指针还是有所区别的
+	int m = 2, n = 3;
+	int** a = (int**)malloc(m * sizeof(int*));
+	// 发现一个现象，二维指针，a和a+1的地址不是连续的
+	// a[0][0]-[2]连续，a[1][0]-[2]连续，但是a[0][2]的下一个地址不是a[1][0]
+	for (int i = 0; i < n; i++) {
+		a[i] = (int*)malloc(n * sizeof(int));
+	}
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 3; j++) {
+			scanf("%d", &a[i][j]);
+		}
+	}
+
+	a = transposition_1(a, 2, 3);
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 2; j++) {
+			printf("%d ", a[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+
 int main()
 {
 	//ss_inOut_test();
@@ -212,7 +353,9 @@ int main()
 	//ex_d();
 	//ex_e();
 	//ex_g();
-	ex_h();
+	//ex_h();
+	//ex_i();
+	ex_i_1();
 
 
 
