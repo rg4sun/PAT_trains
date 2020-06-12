@@ -19,10 +19,31 @@ void ex_a() {
 	cout << a;
 }
 
+// 问题 B: 习题7-7 复制字符串中的元音字母
+string vowel_extract(string str) {
+	string vowels = "";
+	for (int i = 0; i < str.length(); i++) {
+		bool p = str[i] == 'a' || str[i] == 'e' 
+			|| str[i] == 'i' || str[i] == 'o' || str[i] == 'u'
+			|| str[i] == 'A' || str[i] == 'E' || str[i] == 'I' 
+			|| str[i] == 'O' || str[i] == 'U';
+		if (p) {
+			vowels += str[i];
+		}
+	}
+	return vowels;
+}
+
+void ex_b() {
+	string s;
+	cin >> s;
+	cout << vowel_extract(s);
+}
 
 int main()
 {
-	ex_a();
+	//ex_a();
+	ex_b();
 
 	return 0;
 }
