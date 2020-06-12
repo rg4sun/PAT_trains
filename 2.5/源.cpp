@@ -347,7 +347,7 @@ void ex_i_1() {
 // 但是 a = return tmp， return之后，地址能够保留tmp的地址
 // 关于返回临时变量的问题
 // http://blog.sina.com.cn/s/blog_6c04852d0101oznf.html
-
+// 见《算法笔记》p68 就能理解了
 
 
 // 问题 J: 例题6-9 字符串求最大值
