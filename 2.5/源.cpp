@@ -342,7 +342,53 @@ void ex_i_1() {
 		printf("\n");
 	}
 }
+// 不知道为啥，a明明是指针
+// 在函数里面 a=tmp 出函数后 地址就变回去了
+// 但是 a = return tmp， return之后，地址能够保留tmp的地址
+// 关于返回临时变量的问题
+// http://blog.sina.com.cn/s/blog_6c04852d0101oznf.html
 
+
+
+// 问题 J: 例题6-9 字符串求最大值
+void ex_j() {
+	string a, b, c;
+	cin >> a >> b >> c; // C++快速输入多个变量数据
+	if (strcmp(a.c_str(), b.c_str()) > 0) {
+		if (strcmp(a.c_str(), c.c_str()) > 0) {
+			cout << a;
+		}
+		else {
+			cout << c;
+		}
+	}
+	else {
+		if (strcmp(b.c_str(), c.c_str()) > 0) {
+			cout << b;
+		}
+		else {
+			cout << c;
+		}
+	}
+}
+
+void ex_j_better() {
+	string a, b, c;
+	cin >> a >> b >> c; // C++快速输入多个变量数据
+	if (strcmp(a.c_str(), b.c_str()) > 0) {
+		if (strcmp(a.c_str(), c.c_str()) > 0) {
+			cout << a;
+			return;
+		}
+	}
+	else {
+		if (strcmp(b.c_str(), c.c_str()) > 0) {
+			cout << b;
+			return;
+		}
+	}
+	cout << c;
+}
 
 int main()
 {
@@ -355,7 +401,8 @@ int main()
 	//ex_g();
 	//ex_h();
 	//ex_i();
-	ex_i_1();
+	//ex_i_1();
+	ex_j_better();
 
 
 
