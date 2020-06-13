@@ -13,8 +13,9 @@ struct person {
 	int count;
 }leader[3] = { "Li",0,"Zhang",0,"Fun",0 };
 
-void ex_a0() { // 本机运行没问题，但是codeup编译一直显示编译中，下面不用string改用char*
+void ex_a0() { // 本机运行没问题，但是codeup编译一直显示编译中，下面不用string改用char* ; 等下，好像是因为n没初始化
 	int n;
+	scanf("%d", &n); // 加上这句应该可以，之前未加这句
 	string tmp;
 	for (int i = 0; i < n; i++) {
 		cin >> tmp;
@@ -98,10 +99,91 @@ void ex_b() {
 	}
 }
 
+// 问题 C: C语言11.4
+// C/C++中的联合体union介绍 
+// https://blog.csdn.net/mooneve/article/details/92703036
+// 我参考了《C语言程序设计现代方法第二版》中union的知识
+// 简言之，union和struct的唯一区别是
+// struct的成员有自己单独的内存空间，而union的成员共享最大成员的内存空间（union其中任一成员改值都会影响别的成员）
+struct member{
+	int num;
+	char name[10];
+	char sex;
+	char job;
+	union {
+		int classID;
+		char position[10];
+	}category;
+};
+
+void ex_c() {
+	int n=110;
+	while (n > 100) {//保证n不超过100
+		scanf("%d", &n);
+	}
+	member* m = (member*)malloc(n * sizeof(member));
+	for (int i = 0; i < n; i++) {
+		scanf("%d", &(m + i)->num);
+		while (1) {//保证每一个人名都不包含空格且长度不超过9
+			scanf("%s", (m + i)->name);
+			if (strlen((m + i)->name) > 9)
+				continue;
+			for (int i = 0; i < strlen((m + i)->name); i++) {
+				if ((m + i)->name[i] == ' ')
+					continue;
+			}
+			break;
+		}
+		while (true) {// 保证性别用m和f两个字符来表示
+			scanf("%c", &(m + i)->sex);
+			bool p = (m + i)->sex == 'm' || (m + i)->sex == 'f';
+			if (!p)
+				continue;
+			break;
+		}
+		while (true) {// 保证性别用m和f两个字符来表示
+			scanf("%c", &(m + i)->job);
+			bool p = (m + i)->job == 's' || (m + i)->job == 't';
+			if (!p)
+				continue;
+			break;
+		}
+		if ((m + i)->job == 's') {
+			scanf("%d", &(m + i)->category.classID);
+		}
+		else {
+			while (1) {//保证职务长度不超过9的无空格字符串
+				scanf("%s", (m + i)->category.position);
+				if (strlen((m + i)->category.position) > 9)
+					continue;
+				for (int i = 0; i < strlen((m + i)->category.position); i++) {
+					if ((m + i)->category.position[i] == ' ')
+						continue;
+				}
+				break;
+			}
+		}
+	}
+
+	for (int i = 0; i < n; i++) {
+		printf("%d %s %c %c ", (m + i)->num, (m + i)->name, (m+ i)->sex, (m + i)->job);
+		if ((m + i)->job == 's') {
+			printf("%d\n", (m + i)->category.classID);
+		}
+		else {
+			printf("%s\n", (m + i)->category.position);
+		}
+	}
+
+}
+
+// 
+
 int main()
 {
 	//ex_a();
-	ex_b();
+	//ex_b();
+	ex_c();
 
 	return 0;
 }
