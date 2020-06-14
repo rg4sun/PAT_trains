@@ -52,7 +52,27 @@ void ex_d() {
 	}
 }
 
+// 问题 E: A+B 输入输出练习V
+void ex_e() { // 输出超限0
+	int N;
+	scanf("%d", &N);
+	while (N--){
+		int M;
+		scanf("%d", &M);
+		int* a = (int*)malloc(M * sizeof(int));
+		int tmp = 0;
+		for (int i = 0; i < M; i++) {
+			scanf("%d", &a[i]);
+			tmp += a[i];
+		}
+		printf("%d\n", tmp);
+	}
+}
+
+
 int main() {
+
+	ex_e();
 
 	return 0;
 }
