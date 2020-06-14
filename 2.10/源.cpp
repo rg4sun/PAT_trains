@@ -69,6 +69,20 @@ void ex_e() { // 输出超限0
 	}
 }
 
+// 问题 F: A+B 输入输出练习VI
+void ex_f() {
+	int N;
+	while (scanf("%d", &N) != EOF) {
+		int* a = (int*)malloc(N * sizeof(int));
+		int tmp = 0;
+		for (int i = 0; i < N; i++) {
+			scanf("%d", &a[i]);
+			tmp += a[i];
+		}
+		printf("%d\n", tmp);
+	}
+}
+
 
 int main() {
 
