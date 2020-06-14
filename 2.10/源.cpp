@@ -92,6 +92,21 @@ void ex_g() {
 }
 
 // 问题 H: A+B 输入输出练习VIII
+void ex_h() {
+	int N;
+	scanf("%d", &N);
+	while (N--) {
+		int M;
+		scanf("%d", &M);
+		int* a = (int*)malloc(M * sizeof(int));
+		int tmp = 0;
+		for (int i = 0; i < M; i++) {
+			scanf("%d", &a[i]);
+			tmp += a[i];
+		}
+		printf("%d\n\n", tmp);
+	}
+}
 
 int main() {
 
