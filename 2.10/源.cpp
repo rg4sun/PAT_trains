@@ -38,6 +38,20 @@ void ex_c() {
 	}
 }
 
+// 问题 D: A+B 输入输出练习IV
+void ex_d() {
+	int N;
+	while (scanf("%d", &N), N != 0) {
+		int* a = (int*)malloc(N * sizeof(int));
+		int tmp = 0;
+		for (int i = 0; i < N; i++) {
+			scanf("%d", &a[i]);
+			tmp += a[i];
+		}
+		printf("%d\n", tmp);
+	}
+}
+
 int main() {
 
 	return 0;
