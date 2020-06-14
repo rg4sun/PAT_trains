@@ -27,6 +27,16 @@ void ex_b() {
 	}
 }
 
+// 问题 C: A+B 输入输出练习III
+void ex_c() {
+	int a, b;
+	while (1) {
+		scanf("%d %d", &a, &b);
+		if (a == 0 && b == 0)
+			break;
+		printf("%d\n", a + b);
+	}
+}
 
 int main() {
 
