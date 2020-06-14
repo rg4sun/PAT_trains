@@ -83,6 +83,13 @@ void ex_f() {
 	}
 }
 
+// 问题 G: A+B 输入输出练习VII
+void ex_g() {
+	int a, b;
+	while (scanf("%d %d", &a, &b) != EOF) {
+		printf("%d\n\n", a + b);
+	}
+}
 
 int main() {
 
