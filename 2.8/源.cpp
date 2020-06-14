@@ -141,7 +141,7 @@ void ex_c() {
 				continue;
 			break;
 		}
-		while (true) {// 保证性别用m和f两个字符来表示
+		while (true) {// 保证job用s和t两个字符来表示
 			scanf("%c", &(m + i)->job);
 			bool p = (m + i)->job == 's' || (m + i)->job == 't';
 			if (!p)
@@ -177,13 +177,55 @@ void ex_c() {
 
 }
 
-// 
+// 问题 D: C语言11.7
+struct Student_D {
+	int id;
+	char name[20];
+	int grades[3];
+};
+
+void input(Student_D s[]) {
+	for (int i = 0; i < 5; i++) {
+		scanf("%d", &(s+i)->id);
+		while (1) {// 名字（长度不超过19的无空格字符串）
+			scanf("%s", (s + i)->name);
+			if (strlen((s + i)->name) > 19)
+				continue;
+			for (int i = 0; i < strlen((s + i)->name); i++) {
+				if ((s + i)->name[i] == ' ')
+					continue;
+			}
+			break;
+		}
+		for (int j = 0; j < 3; j++) { //3门课程的成绩（0至100之间的整数）
+			while (scanf("%d", &(s + i)->grades[j]), (s + i)->grades[j] <0 || (s + i)->grades[j] > 100) {
+				// do nothing
+			}
+		}
+		
+	}
+}
+
+void print(Student_D s[]) {
+	for (int i = 0; i < 5; i++) {
+		printf("%d %s %d %d %d\n", (s + i)->id, (s + i)->name,
+			(s + i)->grades[0], (s + i)->grades[1], (s + i)->grades[2]);
+	}
+}
+
+void ex_d() {
+	Student_D s[5];
+	input(s);
+	print(s);
+
+}
 
 int main()
 {
 	//ex_a();
 	//ex_b();
-	ex_c();
+	//ex_c();
+	ex_d();
 
 	return 0;
 }
