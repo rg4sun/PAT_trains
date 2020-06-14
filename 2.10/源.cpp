@@ -17,6 +17,17 @@ void ex_a() {
 	}
 }
 
+// 问题 B: A+B 输入输出练习II
+void ex_b() {
+	int N,a,b;
+	scanf("%d", &N);
+	while (N--) {
+		scanf("%d %d", &a, &b);
+		printf("%d\n", a + b);
+	}
+}
+
+
 int main() {
 
 	return 0;
