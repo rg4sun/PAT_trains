@@ -220,12 +220,68 @@ void ex_d() {
 
 }
 
+// 问题 E: C语言11.8
+struct Student_E {
+	int id;
+	char name[20];
+	int grades[3];
+	double avg_grade;
+};
+
+void input_e(Student_E s[], int n) {
+	for (int i = 0; i < n; i++) {
+		scanf("%d", &(s + i)->id);
+		while (1) {// 名字（长度不超过19的无空格字符串）
+			scanf("%s", (s + i)->name);
+			if (strlen((s + i)->name) > 19)
+				continue;
+			for (int i = 0; i < strlen((s + i)->name); i++) {
+				if ((s + i)->name[i] == ' ')
+					continue;
+			}
+			break;
+		}
+		(s+i)->avg_grade = 0;
+		for (int j = 0; j < 3; j++) { //3门课程的成绩（0至100之间的整数）
+			while (scanf("%d", &(s + i)->grades[j]), (s + i)->grades[j] < 0 || (s + i)->grades[j] > 100) {
+				// do nothing
+			}
+			(s + i)->avg_grade += (s + i)->grades[j];
+		}
+		(s + i)->avg_grade /= 3;
+	}
+}
+
+
+
+void ex_e() {
+	Student_E s[3];
+	int n = 10;
+	input_e(s, n);
+	int max = 0;
+	double grade_avg[3] = { 0,0,0 };
+	for (int i = 0; i < n; i++) {
+		if (s[max].avg_grade < s[i].avg_grade)
+			max = i;
+		grade_avg[0] += (double)s[i].grades[0];
+		grade_avg[1] += (double)s[i].grades[1];
+		grade_avg[2] += (double)s[i].grades[2];
+	}
+	for (int i = 0; i < 3; i++) {
+		printf("%.2f ", grade_avg[i] /= n);
+	}
+	printf("\n%d %s %d %d %d\n", (s + max)->id, (s + max)->name,
+		(s + max)->grades[0], (s + max)->grades[1], (s + max)->grades[2]);
+
+}
+
 int main()
 {
 	//ex_a();
 	//ex_b();
 	//ex_c();
-	ex_d();
+	//ex_d();
+	ex_e();
 
 	return 0;
 }
