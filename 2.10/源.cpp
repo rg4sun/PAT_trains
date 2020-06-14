@@ -91,6 +91,8 @@ void ex_g() {
 	}
 }
 
+// 问题 H: A+B 输入输出练习VIII
+
 int main() {
 
 	ex_e();
