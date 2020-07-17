@@ -21,5 +21,8 @@
     <ClCompile Include="b1001.cpp">
       <Filter>头文件</Filter>
     </ClCompile>
+    <ClCompile Include="b1032.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
