@@ -25,7 +25,7 @@ void ex_b_err() { // 这个只能测一组数据
 	printf("%d", findX(n));
 }
 
-void ex_b_() { 
+void ex_b() { 
 	int n;
 	while (scanf("%d", &n) != EOF) { // 多组数据时候，一定要加上这个循环
 		printf("%d\n", findX(n)); // 输出要加 \n 才正确通过
