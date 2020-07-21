@@ -36,24 +36,40 @@ int interval_days(int date1, int date2) {
 	while (--month) { // 直接mod出来的月份不用算
 		days += daysOfMonth(date2 / 10000, month);
 	}
-	printf("%d", days);
-	return 0;
-	// 计算 date1 至其下一年还剩几天
 
 	// 计算 date1 到 date2 间隔了几个整年，并计算天数
-	
-
-
-
-
-}
-
-void ex_a() {
-
+	int yearsBetween = date2 / 10000 - date1 / 10000;// -1; 这个放到while头部里
+	if (yearsBetween == 0) {
+		month = (date1 / 100) % 100;
+		days = days - date1 % 100 + 1;
+		while (--month) {
+			days -= daysOfMonth(date1 / 10000, month);
+		}
+	}
+	else if(yearsBetween == 1){// 计算 date1 至其下一年还剩几天
+		month = (date1 / 100) % 100;
+		days += daysOfMonth(date1 / 10000, month) - date1 % 100 + 1;
+		for (int m = month + 1; m < 13; m++) {
+			days += daysOfMonth(date1 / 10000, m);
+		}
+	}
+	else {
+		month = (date1 / 100) % 100;
+		days += daysOfMonth(date1 / 10000, month) - date1 % 100 + 1;
+		for (int m = month + 1; m < 13; m++) {
+			days += daysOfMonth(date1 / 10000, m);
+		}
+		for (int y = 1; y < yearsBetween; y++) {
+			for (int m = 1; m < 13; m++) {
+				days += daysOfMonth(date1 / 10000 + y, m);
+			}
+		}
+	}
+	return days;
 }
 
 int main()
 {
-	interval_days(20200101, 20200301);
+	printf("%d", interval_days(20130101,20130105));
 	return 0;
 }
