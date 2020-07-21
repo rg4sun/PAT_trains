@@ -15,10 +15,11 @@ using namespace std;
 //	return result;
 //}
 
+/*
 inline string baseConverter(int x, int base) {
 	string result = "";
 	while (x) {
-		char tmp[2];
+		char tmp[5];
 		sprintf(tmp, "%d", x % base);
 		result = tmp + result;
 		x /= base;
@@ -27,6 +28,27 @@ inline string baseConverter(int x, int base) {
 }
 
 inline void test() {
-	cout << baseConverter(123+456, 8);
+	int a, b, d;
+	scanf("%d %d %d", &a, &b, &d);
+	cout << baseConverter(a+b, d);
 }
+*/
+// 以上代码在 PAT 中部分正确，有一组测试点答案错误
+
+void test() {
+	int a, b, d;
+	scanf("%d %d %d", &a, &b, &d);
+	a += b;
+	int r[32] = { 0 };
+	int len = 0;
+	while (a) {
+		r[len++] = a % d;
+		a /= d;
+	}
+	for (int i = len - 1; i >= 0; i--) { // 这里的 len - 1是因为即使while不再执行，但最后一轮还会给len自增一次
+		printf("%d", r[i]);
+	}
+}
+
+// ummmm 还是不对。，。 我比较怀疑是不是 16进制的字母问题
 
