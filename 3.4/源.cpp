@@ -68,6 +68,14 @@ int interval_days(int date1, int date2) {
 	return days;
 }
 
+void ex_a() {
+	int date1, date2;
+	while (scanf("%d\n%d", &date1, &date2) != EOF) {
+		printf("%d\n", interval_days(date1, date2));
+	}
+}
+
+
 int main()
 {
 	printf("%d", interval_days(20130101,20130105));
