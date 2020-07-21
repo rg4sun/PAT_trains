@@ -30,7 +30,22 @@ int interval_days(int date1, int date2) {
 		date1 = date2;
 		date2 = tmp;
 	}
+	int days = date2 % 100; // 记录天数
+	// 计算date2 过去了几天
+	int month = (date2 / 100) % 100;
+	while (--month) { // 直接mod出来的月份不用算
+		days += daysOfMonth(date2 / 10000, month);
+	}
+	printf("%d", days);
 	return 0;
+	// 计算 date1 至其下一年还剩几天
+
+	// 计算 date1 到 date2 间隔了几个整年，并计算天数
+	
+
+
+
+
 }
 
 void ex_a() {
@@ -39,6 +54,6 @@ void ex_a() {
 
 int main()
 {
-	printf("%d", daysOfMonth(2020, 2));
+	interval_days(20200101, 20200301);
 	return 0;
 }
