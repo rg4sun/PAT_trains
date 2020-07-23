@@ -33,10 +33,14 @@ inline string strReverse(string str) {
 		if (str[i] == ' ') {
 			//reStr = str.substr(subStrStart, i - 1) + reStr; // 这样会导致每个单词没有空格
 			// umm C++ substr(start, length) 第二个参数不是索引 。，。 靠。。好不智能...py真就一句切片完成本题
-			reStr = str.substr(subStrStart, i - subStrStart) + reStr; // i - subStrStart计算单词长度
+			reStr = str.substr(subStrStart, i - subStrStart + 1) + reStr; // i - subStrStart + 1计算单词长度，+1 是把空格加上
 			subStrStart = i + 1;
 		}
+		else if (i == str.length() - 1) {// 最后一个单词后面可能没有空格
+			reStr = str.substr(subStrStart, i - subStrStart + 1) +" "+ reStr;
+		}
 	}// erase 成员函数可以删除 string 对象中的子串, 若只有一个index则删除该index（含）及其后面的所以字符
+	return reStr;
 	return reStr.erase(reStr.length() - 1); // 去除最后一个空格
 }
 
