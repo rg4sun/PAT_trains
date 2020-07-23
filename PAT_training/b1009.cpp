@@ -23,6 +23,12 @@ inline string strReverse(string str) {
 
 inline void test()
 {
-	string str = "abcde";
-	cout << str.substr(2, str.length() - 1);
+	string str;
+	//cin >> str;
+	//在C++中，用cin>>str;这种方法来接收字符串那么录入的str不能包含空格，否则它会按照空格将整个字符串切分成若干段。
+	//如果你要是想输入带空格的字符串那就要用到getline()这个函数了。
+	// https://blog.csdn.net/weixin_41700016/article/details/104091066
+	// https://www.cnblogs.com/superjn/p/10035790.html
+	getline(cin,str);
+	cout << strReverse(str);
 }
