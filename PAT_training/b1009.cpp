@@ -36,11 +36,10 @@ inline string strReverse(string str) {
 			reStr = str.substr(subStrStart, i - subStrStart + 1) + reStr; // i - subStrStart + 1计算单词长度，+1 是把空格加上
 			subStrStart = i + 1;
 		}
-		else if (i == str.length() - 1) {// 最后一个单词后面可能没有空格
+		else if (i == (int)str.length() - 1) {// 最后一个单词后面可能没有空格
 			reStr = str.substr(subStrStart, i - subStrStart + 1) +" "+ reStr;
 		}
 	}// erase 成员函数可以删除 string 对象中的子串, 若只有一个index则删除该index（含）及其后面的所以字符
-	return reStr;
 	return reStr.erase(reStr.length() - 1); // 去除最后一个空格
 }
 
