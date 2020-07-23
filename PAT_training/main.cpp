@@ -3,7 +3,8 @@
 //#include "b1001.cpp"
 //#include "b1032.cpp"
 //#include "b1036.cpp"
-#include "b1022.cpp"
+//#include "b1022.cpp"
+#include "b1009.cpp"
 
 
 int main() {

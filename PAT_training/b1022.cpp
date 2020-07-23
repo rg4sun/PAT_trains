@@ -35,7 +35,7 @@ inline void test() {
 */
 // 以上代码在 PAT 中部分正确，有一组测试点答案错误
 
-void test() {
+inline void test() {
 	int a, b, d;
 	scanf("%d %d %d", &a, &b, &d);
 	a += b;
