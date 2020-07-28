@@ -30,6 +30,9 @@
     <ClCompile Include="b1009.cpp">
       <Filter>头文件</Filter>
     </ClCompile>
+    <ClCompile Include="a1025.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="b1036.cpp">

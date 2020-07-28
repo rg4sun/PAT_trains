@@ -144,6 +144,7 @@
     <ClCompile Include="b1022.cpp" />
     <ClCompile Include="b1032.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="a1025.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="b1036.cpp" />
