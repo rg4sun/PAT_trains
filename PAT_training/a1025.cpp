@@ -2,5 +2,5 @@
 #include<cstdio>
 
 inline void test() {
-
+	return;
 }
