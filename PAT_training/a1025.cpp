@@ -38,7 +38,9 @@ inline void selectSort(Student stu[], int amount) {
 
 inline void showStu(Student stu[], int amount) {
 	for (int i = 0; i < amount; i++) {
-		cout << stu[i].id << ' ' << stu[i].grade << ' ' << stu[i].location << ' ' << stu[i].local_rank << endl;
+		cout << stu[i].id << ' ' << stu[i].grade << ' '
+			<< stu[i].total_rank << ' '<< stu[i].location 
+			<< ' ' << stu[i].local_rank << endl;
 	}
 }
 
