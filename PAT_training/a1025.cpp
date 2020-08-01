@@ -3,6 +3,7 @@
 #include<string>
 #include<cstring>
 #include<iostream>
+#include<algorithm>
 using namespace std;
 
 struct Student
@@ -80,6 +81,13 @@ inline void calcRank(Student stu[], int amount, bool localOrTotal) {
 	}
 }
 
+inline bool cmp(Student a, Student b) {
+	if (a.grade != b.grade)
+		return a.grade > b.grade;
+	else
+		return strcmp(a.id, b.id) < 0;
+}
+
 inline void test() {
 	int n; // 考场数量
 	scanf("%d", &n);
@@ -96,11 +104,13 @@ inline void test() {
 			amount++;
 		}
 		// 这里完成了一个考场的数据录入，在此马上对这个考场进行排序
-		selectSort(stu + amount - k, k); // 这里是 指针头的计算，每个考场的第一个考生地址
+		//selectSort(stu + amount - k, k); // 这里是 指针头的计算，每个考场的第一个考生地址
+		sort(stu + amount - k, stu + amount, cmp); // 换成c++内置的排序函数
 		calcRank(stu + amount - k, k, true);// 计算考场排名
 
 	}
-	selectSort(stu, amount);// 整体排序
+	//selectSort(stu, amount);// 整体排序
+	sort(stu, stu + amount, cmp);// 换成c++内置的排序函数
 	calcRank(stu, amount, false);// 计算总排名
 	showStu(stu, amount);
 
