@@ -37,8 +37,9 @@ inline void selectSort(Student stu[], int amount) {
 }
 
 inline void showStu(Student stu[], int amount) {
+	cout << amount << endl;
 	for (int i = 0; i < amount; i++) {
-		cout << stu[i].id << ' ' << stu[i].grade << ' '
+		cout << stu[i].id << ' ' 
 			<< stu[i].total_rank << ' '<< stu[i].location 
 			<< ' ' << stu[i].local_rank << endl;
 	}
@@ -52,8 +53,8 @@ inline void calcRank(Student stu[], int amount, bool localOrTotal) {
 			if (stu[i].grade == stu[i - 1].grade) {// 分数与上一名一样则排名取上一位
 				stu[i].local_rank = stu[i - 1].local_rank;
 			}
-			else {// 不一样则排名就是当前序号
-				stu[i].local_rank = i;
+			else {// 不一样则排名就是当前序号(由于数组从0开始，故需+1)
+				stu[i].local_rank = i+1;
 			}
 		}
 	}
@@ -64,8 +65,8 @@ inline void calcRank(Student stu[], int amount, bool localOrTotal) {
 			if (stu[i].grade == stu[i - 1].grade) {// 分数与上一名一样则排名取上一位
 				stu[i].total_rank = stu[i - 1].total_rank;
 			}
-			else {// 不一样则排名就是当前序号
-				stu[i].total_rank = i;
+			else {// 不一样则排名就是当前序号(由于数组从0开始，故需+1)
+				stu[i].total_rank = i+1;
 			}
 		}
 	}
