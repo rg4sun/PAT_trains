@@ -1,6 +1,7 @@
 #pragma warning(disable : 4996) // 弃用VS的安全措施，使scanf等原生C函数可用
 #include<cstdio>
 #include<string>
+#include<cstring>
 #include<iostream>
 using namespace std;
 
@@ -36,12 +37,19 @@ inline void selectSort(Student stu[], int amount) {
 	}
 }
 
+//inline void showStu(Student stu[], int amount) {
+//	cout << amount << endl;
+//	for (int i = 0; i < amount; i++) {
+//		cout << stu[i].id << ' ' 
+//			<< stu[i].total_rank << ' '<< stu[i].location 
+//			<< ' ' << stu[i].local_rank << endl;
+//	}
+//}
+
 inline void showStu(Student stu[], int amount) {
-	cout << amount << endl;
+	printf("%d\n", amount);
 	for (int i = 0; i < amount; i++) {
-		cout << stu[i].id << ' ' 
-			<< stu[i].total_rank << ' '<< stu[i].location 
-			<< ' ' << stu[i].local_rank << endl;
+		printf("%s %d %d %d\n", stu[i].id, stu[i].total_rank, stu[i].location, stu[i].local_rank);
 	}
 }
 
@@ -75,7 +83,7 @@ inline void calcRank(Student stu[], int amount, bool localOrTotal) {
 inline void test() {
 	int n; // 考场数量
 	scanf("%d", &n);
-	Student stu[10 * 10 * 10 * 10];
+	Student stu[100 * 300 + 10];
 	memset(stu, 0, sizeof(stu));// 整体置为0
 	int amount = 0;// 记录总人数
 	for (int i = 1; i <= n; i++) {
