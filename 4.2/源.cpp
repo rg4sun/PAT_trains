@@ -13,10 +13,12 @@ void ex_a() {
 		bookTable[buddy[i]]++;
 	}
 	for (int i = 0; i < n; i++) {
-		if (bookTable[buddy[i]] == 0)
+		//if (bookTable[buddy[i]] == 0)//这样不对，按上面的算法，只要有人喜欢一本书，那至少为1，但是只有一个人喜欢
+		if (bookTable[buddy[i]] == 1)// 所以这里的判断应该这么写
 			printf("BeiJu\n");
 		else
-			printf("%d\n", bookTable[buddy[i]]);
+			//printf("%d\n", bookTable[buddy[i]]);
+			printf("%d\n", bookTable[buddy[i]] - 1);// 同理这里要把自己减去
 	}
 }
 
