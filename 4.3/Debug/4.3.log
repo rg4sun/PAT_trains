@@ -1,13 +1,2 @@
 ﻿  源.cpp
-  3queens4debug.cpp
-D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\4.3\3queens4debug.cpp(18,18): error C2065: “p”: 未声明的标识符
-D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\4.3\3queens4debug.cpp(18,12): warning C4473: “printf”: 没有为格式字符串传递足够的参数
-D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\4.3\3queens4debug.cpp(18,12): message : 占位符和其参数预计 1 可变参数，但提供的却是 0 参数
-D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\4.3\3queens4debug.cpp(18,12): message : 缺失的可变参数 1 为格式字符串“%d”所需
-D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\4.3\3queens4debug.cpp(26,7): error C2065: “hashTable”: 未声明的标识符
-D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\4.3\3queens4debug.cpp(31,37): error C2065: “p”: 未声明的标识符
-D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\4.3\3queens4debug.cpp(37,5): error C2065: “p”: 未声明的标识符
-D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\4.3\3queens4debug.cpp(38,5): error C2065: “hashTable”: 未声明的标识符
-D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\4.3\3queens4debug.cpp(40,5): error C2065: “hashTable”: 未声明的标识符
-D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\4.3\3queens4debug.cpp(51,19): error C2065: “count”: 未声明的标识符
-  正在生成代码...
+  4.3.vcxproj -> D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\4.3\Debug\4.3.exe
