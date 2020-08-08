@@ -38,7 +38,8 @@ void queen8(int index, int order) {
 	}
 }
 
-void ex_d_err() { // 时间超限, 同时好像 输出格式不符合要求
+void ex_d_err() { // 时间超限, 同时好像 输出格式不符合要求，不是，好像是只输出了第一个皇后串就结束了
+	// 哦 我傻了。，。 看这个函数里的第二个for里的i，用的是第一个for的i，重定义为局部变量就好了
 	int n;
 	while (scanf("%d", &n) != EOF) {
 		for (int i = 0; i < n; i++) {
@@ -60,7 +61,7 @@ void ex_d() {
 		int order;
 		scanf("%d", &order);
 		queen8(1, order); // 输出当前序号的 皇后串
-		for (i = 0; i < 9; i++) { // 哈希表整个重置
+		for (int i = 0; i < 9; i++) { // 哈希表整个重置
 			hashTable[i] = false;
 		}
 		count = 0;
