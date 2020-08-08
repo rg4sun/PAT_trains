@@ -1,0 +1,2 @@
+D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\4.3_A_queen4debug\Debug\4.3_A_queen4debug.exe
+D:\R.G. Palace\PROJECTS\PAT\算法笔记习题刷题源码\4.3_A_queen4debug\Debug\4.3_A_queen4debug.pdb
