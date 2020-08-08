@@ -10,17 +10,18 @@
 //改成4皇后
 int count = 0, p[5], hashTable[5] = { false }; // 由于要取到4，并且从1开始，所以长度设为5
 
-void queen3(int index, int order, int count) {
+void queen3(int index, int order/*, int count*/) { 
+	// 调试的时候终于发现了，这里我傻了又定义了一个count，导致在queen3函数里的count是局部变量，每次return之后会重置为0
+	// 这里直接删掉 queen3的count定义就好了，外部已经定义了全局变量了
 	if (index == 5) {
 		count++; // count更新有问题，放这里的时候，一直是1
-		if (1) { // 如果是需要输出的皇后串序号
-			printf("the %d queen sequence:\n", count);
+		if (count == order) { // 如果是需要输出的皇后串序号
+			//printf("the %d queen sequence:\n", count);
 			for (int i = 1; i < 5; i++) {
 				printf("%d", p[i]);
 			}
 			printf("\n");
 		}
-		//count++;
 		return;
 	}
 	for (int x = 1; x <= 4; x++) {
@@ -37,7 +38,7 @@ void queen3(int index, int order, int count) {
 			if (notCollision) {// 不冲撞，则当前x可以存入序列
 				p[index] = x;
 				hashTable[x] = true;
-				queen3(index + 1, order, count); // 递归计算下一列
+				queen3(index + 1, order); // 递归计算下一列
 				hashTable[x] = false;// 本行递归完毕，重置本行哈希表
 			}
 		}
@@ -49,7 +50,7 @@ int main()
 {
 	int order;
 	scanf("%d", &order);
-	queen3(1, order, count); // 输出当前序号的 皇后串
+	queen3(1, order); // 输出当前序号的 皇后串
 
 	return 0;
 }
