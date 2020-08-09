@@ -16,7 +16,7 @@ inline bool cmp(MoonCake a, MoonCake b) {// sort用的比较函数，按照单价从高到低排
 	return a.price > b.price;
 }
 
-inline void test() {
+inline void test_err() {// 有一组测试用例显示段错误
 	int n, d; // 月饼种类数、市场最大需求量
 	scanf("%d %d", &n, &d);
 	MoonCake* moonCake = (MoonCake*)malloc(n * sizeof(MoonCake));
@@ -41,5 +41,35 @@ inline void test() {
 			cakeId++;
 		}
 	}
-	printf("%.2lf", cost);
+	printf("%.2f", cost);
+}
+
+inline void test() {
+	int n; // 月饼种类数、市场最大需求量
+	double d; // 市场最大需求量 也改成double型
+	// 考虑到可能不是整的，就有0.5吨这样，就不能单纯的d--了
+	scanf("%d %lf", &n, &d);
+	MoonCake* moonCake = (MoonCake*)malloc(n * sizeof(MoonCake));
+	for (int i = 0; i < n; i++) {
+		scanf("%lf", &moonCake[i].totalAmount);
+	}
+	for (int i = 0; i < n; i++) {
+		scanf("%lf", &moonCake[i].totalPrice);
+		moonCake[i].price = moonCake[i].totalPrice / moonCake[i].totalAmount;
+	}
+	sort(moonCake, moonCake + n, cmp);
+	double cost = 0; // 记录花费
+	int cakeId = 0;
+	while (d > 0) {
+		if (moonCake[cakeId].totalAmount <= d) {// 当前种类月饼有库存 <= 当前剩余需求
+			d -= moonCake[cakeId].totalAmount; // 直接减去整个库存
+			cost += moonCake[cakeId].totalPrice;
+		}
+		else {// 当前种类月饼有库存 > 当前剩余需求
+			cost += d * moonCake[cakeId].price;
+			break; 
+		}
+		cakeId++;
+	}
+	printf("%.2f", cost);
 }
