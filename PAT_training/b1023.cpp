@@ -14,8 +14,10 @@ inline void test() {
 	// 实现方式：先把numTable中的数放入output，如 001117889
 	int index = 0; // 下标指示器，记录当前在output中的下标
 	for (int num = 0; num < 10; num++) {
-		for (int numAmount = 0; numAmount <= numTable[num]; numAmount++) {
+		for (int numAmount = 0; numAmount < numTable[num]; numAmount++) {// 不是numAmount <= numTable[num]
 			output[index++] = num;
+			//output[index] = num;
+			//index++;
 		}
 	}
 	// 在判断首字符是不是0，是的话则找到第一个比0大的数与首字符交换
