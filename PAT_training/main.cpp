@@ -5,10 +5,8 @@
 //#include "b1036.cpp"
 //#include "b1022.cpp"
 //#include "b1009.cpp"
-#include "a1025.cpp"
-#include<string>
-#include<iostream>
-using namespace std;
+//#include "a1025.cpp"
+#include "b1020.cpp"
 
 
 int main() {

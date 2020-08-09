@@ -12,7 +12,7 @@ struct MoonCake
 	double price;
 };
 
-bool cmp(MoonCake a, MoonCake b) {// sort用的比较函数，按照单价从高到低排序
+inline bool cmp(MoonCake a, MoonCake b) {// sort用的比较函数，按照单价从高到低排序
 	return a.price > b.price;
 }
 
