@@ -29,11 +29,17 @@ inline void test() {
 	}
 	sort(moonCake, moonCake + n, cmp);
 	d = (double)d; // 将需求量强制变成double型
-	double supplyAmount = 0; // 记录已经满足了多少需求
+	double cost = 0; // 记录花费
 	int cakeId = 0;
-	while (d) {
-		if (moonCake[cakeId].totalAmount > 0) {
-
+	while (d>0) {
+		if (moonCake[cakeId].totalAmount > 0) {// 当前种类月饼有库存
+			moonCake[cakeId].totalAmount--;
+			d--;
+			cost += moonCake[cakeId].price;
+		}
+		else {// 无库存，则cakeId++，换下一贵的月饼
+			cakeId++;
 		}
 	}
+	printf("%.2lf", cost);
 }
