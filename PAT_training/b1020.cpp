@@ -44,7 +44,7 @@ inline void test_err() {// 有一组测试用例显示段错误
 	printf("%.2f", cost);
 }
 
-inline void test() {
+inline void test_still_err() {
 	int n; // 月饼种类数、市场最大需求量
 	double d; // 市场最大需求量 也改成double型
 	// 考虑到可能不是整的，就有0.5吨这样，就不能单纯的d--了
@@ -67,9 +67,38 @@ inline void test() {
 		}
 		else {// 当前种类月饼有库存 > 当前剩余需求
 			cost += d * moonCake[cakeId].price;
-			break; 
+			break; // 别忘记这里必须要跳出，因为已经满足了所有需求
 		}
 		cakeId++;
 	}
 	printf("%.2f", cost);
+}
+
+inline void test() {
+	int n; // 月饼种类数、市场最大需求量
+	double d; // 市场最大需求量 也改成double型
+	// 考虑到可能不是整的，就有0.5吨这样，就不能单纯的d--了
+	scanf("%d %lf", &n, &d);
+	MoonCake* moonCake = (MoonCake*)malloc(n * sizeof(MoonCake));
+	for (int i = 0; i < n; i++) {
+		scanf("%lf", &moonCake[i].totalAmount);
+	}
+	for (int i = 0; i < n; i++) {
+		scanf("%lf", &moonCake[i].totalPrice);
+		moonCake[i].price = moonCake[i].totalPrice / moonCake[i].totalAmount;
+	}
+	sort(moonCake, moonCake + n, cmp);
+	double cost = 0; // 记录花费
+	int cakeId = 0;
+	for (int i = 0; i < n; i++) { // 不知道为啥这里改成 for就完全正确了
+		if (moonCake[i].totalAmount <= d) {
+			d -= moonCake[i].totalAmount;
+			cost += moonCake[i].totalPrice;
+		}
+		else {
+			cost += d * moonCake[i].price;
+			break;
+		}
+	}
+	printf("%.2f\n", cost);
 }
